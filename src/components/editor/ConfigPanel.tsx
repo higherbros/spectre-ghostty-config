@@ -20,6 +20,7 @@ import {
   Apple,
   Monitor,
   Wrench,
+  Info,
 } from "lucide-react";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -69,6 +70,23 @@ export function ConfigPanel({ category, highlightedOption }: ConfigPanelProps) {
             </div>
           </div>
         </div>
+
+        {/* Font preview info note - only shown for fonts category */}
+        {category === "fonts" && (
+          <div className="mb-6 p-4 rounded-lg bg-blue-500/10 border border-blue-500/20 animate-fade-up">
+            <div className="flex gap-3">
+              <Info className="h-5 w-5 text-blue-500 shrink-0 mt-0.5" />
+              <div className="text-sm">
+                <p className="text-blue-200 font-medium mb-1">Preview Font Limitation</p>
+                <p className="text-muted-foreground">
+                  The terminal preview can only display fonts available in your browser.
+                  For custom fonts, they must be installed on your system.
+                  Ghostty&apos;s built-in default is <span className="text-foreground font-medium">JetBrains Mono</span>.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Options list */}
         <div className="space-y-3">
