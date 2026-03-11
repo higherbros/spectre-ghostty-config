@@ -101,9 +101,11 @@ export const KEYBIND_ACTIONS: KeybindAction[] = [
   // === Clipboard ===
   {
     action: "copy_to_clipboard",
-    description: "Copy the selected text to the clipboard",
+    description: "Copy the selected text to the clipboard. Optional format param added in 1.3.0.",
     category: "clipboard",
-    hasParam: false
+    hasParam: true,
+    paramDesc: "Format (optional): mixed (default), text, html, vt",
+    paramOptions: ["mixed", "text", "html", "vt"]
   },
   {
     action: "paste_from_clipboard",
@@ -276,9 +278,11 @@ export const KEYBIND_ACTIONS: KeybindAction[] = [
   },
   {
     action: "close_tab",
-    description: "Close the current tab and all its splits",
+    description: "Close the current tab and all its splits. Use 'right' param to close all tabs to the right.",
     category: "tab",
-    hasParam: false
+    hasParam: true,
+    paramDesc: "Optional: 'right' to close all tabs to the right",
+    paramOptions: ["right"]
   },
 
   // === Split ===
@@ -339,11 +343,25 @@ export const KEYBIND_ACTIONS: KeybindAction[] = [
   },
   {
     action: "close_all_windows",
-    description: "Close all windows",
+    description: "Close all windows (macOS only)",
     category: "window",
     hasParam: false,
-    deprecated: true,
-    deprecatedMessage: "Use all:close_window instead"
+    platform: "macos"
+  },
+  {
+    action: "goto_window",
+    description: "Navigate to a specific window by order (1.3.0+)",
+    category: "window",
+    hasParam: true,
+    paramDesc: "Direction",
+    paramOptions: ["next", "previous"]
+  },
+  {
+    action: "toggle_background_opacity",
+    description: "Toggle between 1.0 and configured background opacity (macOS, 1.3.0+)",
+    category: "window",
+    hasParam: false,
+    platform: "macos"
   },
   {
     action: "toggle_fullscreen",
@@ -472,6 +490,31 @@ export const KEYBIND_ACTIONS: KeybindAction[] = [
   {
     action: "clear_screen",
     description: "Clear the screen and all scrollback",
+    category: "system",
+    hasParam: false
+  },
+  {
+    action: "toggle_mouse_reporting",
+    description: "Toggle mouse reporting to the TUI on/off (1.3.0+)",
+    category: "system",
+    hasParam: false
+  },
+  {
+    action: "activate_key_table",
+    description: "Activate a named key table for modal keybinding (1.3.0+)",
+    category: "system",
+    hasParam: true,
+    paramDesc: "Table name (e.g., resize)"
+  },
+  {
+    action: "deactivate_key_table",
+    description: "Deactivate the currently active key table (1.3.0+)",
+    category: "system",
+    hasParam: false
+  },
+  {
+    action: "end_key_sequence",
+    description: "End an active key sequence, flushing prior keys to the terminal (1.3.0+)",
     category: "system",
     hasParam: false
   },

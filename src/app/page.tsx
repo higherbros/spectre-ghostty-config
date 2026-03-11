@@ -14,6 +14,7 @@ import {
   Share2,
   Command,
   Sparkles,
+  Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -57,9 +58,20 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left - Text */}
             <div className="space-y-8 animate-fade-up">
-              <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-                <Command className="h-4 w-4" />
-                <span>Configuration made visual</span>
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+                  <Command className="h-4 w-4" />
+                  <span>Configuration made visual</span>
+                </div>
+                <a
+                  href="https://ghostty.org/docs/install/release-notes/1-3-0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors"
+                >
+                  <Zap className="h-3 w-3" />
+                  Ghostty 1.3.0 ready
+                </a>
               </div>
               
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-[1.1]">
